@@ -16,6 +16,7 @@ class VerifyView: UIView {
         
         verifyTextFieldConfiguration()
         setConstraints()
+        verifyFields[0].becomeFirstResponder()
         translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -32,6 +33,7 @@ class VerifyView: UIView {
         for number in 0...4{
             let verifyTextfield = VerifyTextField()
             verifyTextfield.tag = number
+            verifyTextfield.fieldDelegate = self
             verifyFields.append(verifyTextfield)
             fieldStack.addArrangedSubview(verifyTextfield)
         }
@@ -40,13 +42,32 @@ class VerifyView: UIView {
     
     private func setConstraints(){
         NSLayoutConstraint.activate([
-            fieldStack.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            fieldStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            fieldStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            fieldStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+            fieldStack.topAnchor.constraint(equalTo: topAnchor),
+            fieldStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            fieldStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+            fieldStack.bottomAnchor.constraint(equalTo: bottomAnchor)
             
         ])
     }
 }
 
-
+extension VerifyView: FieldsProtocol {
+    func activeNextField(tag: Int) {
+        
+        if tag != verifyFields.count - 1 {
+            verifyFields[tag + 1].becomeFirstResponder()
+        }
+        else{
+            //check
+            print("Check")
+        }
+    }
+    
+    func activePreviousFields(tag: Int) {
+        if tag != 0 {
+            verifyFields[tag - 1].becomeFirstResponder()
+        }
+    }
+    
+    
+}

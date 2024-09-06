@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol FieldsProtocol: AnyObject {
+    func activeNextField(tag: Int)
+    func activePreviousFields(tag: Int)
+}
+
 class VerifyTextField: UITextField {
+    
+    weak var fieldDelegate: FieldsProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,7 +28,8 @@ class VerifyTextField: UITextField {
     }
     
     private func configure(){
-        backgroundColor = .lightGray
+        backgroundColor = .systemGray5
+        keyboardType = .numberPad
         layer.cornerRadius = 10
         tintColor = .clear
         layer.borderColor = UIColor.purple.cgColor
@@ -30,9 +38,28 @@ class VerifyTextField: UITextField {
         textAlignment = .center
         
     }
+    
+    override func deleteBackward() {
+        fieldDelegate?.activePreviousFields(tag: tag)
+    }
 }
 
 extension VerifyTextField: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if let text = textField.text, let textRange = Range(range, in: text) {
+               let updatedText = text.replacingCharacters(in: textRange, with: string)
+               textField.text = updatedText
+           }
+    //    text = string
+        
+        if range.length == 0 {
+            fieldDelegate?.activeNextField(tag: tag)
+            resignFirstResponder()
+        }
+        return false
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         layer.borderWidth = 2
     }

@@ -29,9 +29,9 @@ class VerifyTextField: UITextField {
     
     private func configure(){
         backgroundColor = .systemGray5
-        keyboardType = .numberPad
+        keyboardType = .numberPad // Sadece sayıları kabul etmesi için sayısal klavye
         layer.cornerRadius = 10
-        tintColor = .clear
+        tintColor = .red
         layer.borderColor = UIColor.purple.cgColor
         textColor = .purple
         font = UIFont.boldSystemFont(ofSize: 40)

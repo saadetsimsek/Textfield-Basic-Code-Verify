@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A2EBF802C8BA615002BEB03 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2EBF7F2C8BA615002BEB03 /* ViewController+Extensions.swift */; };
 		6AA1BC652C81EF47005725FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA1BC642C81EF47005725FB /* AppDelegate.swift */; };
 		6AA1BC672C81EF47005725FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA1BC662C81EF47005725FB /* SceneDelegate.swift */; };
 		6AA1BC692C81EF47005725FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA1BC682C81EF47005725FB /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A2EBF7F2C8BA615002BEB03 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 		6AA1BC612C81EF47005725FB /* BasicCodeVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicCodeVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA1BC642C81EF47005725FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AA1BC662C81EF47005725FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A2EBF7E2C8BA5FA002BEB03 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6A2EBF7F2C8BA615002BEB03 /* ViewController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6AA1BC582C81EF47005725FB = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		6AA1BC632C81EF47005725FB /* BasicCodeVerify */ = {
 			isa = PBXGroup;
 			children = (
+				6A2EBF7E2C8BA5FA002BEB03 /* Extensions */,
 				6ACEAD3E2C88F53F00226D1C /* Application */,
 				6ACEAD3D2C88F53800226D1C /* Views */,
 				6ACEAD3C2C88F52C00226D1C /* Controllers */,
@@ -297,6 +308,7 @@
 				6ACEAD442C88F69E00226D1C /* VerifyView.swift in Sources */,
 				6AA1BC672C81EF47005725FB /* SceneDelegate.swift in Sources */,
 				6ACEAD422C88F5A500226D1C /* VerifyTextField.swift in Sources */,
+				6A2EBF802C8BA615002BEB03 /* ViewController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

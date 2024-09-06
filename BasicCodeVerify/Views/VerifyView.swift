@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol VerifyProtocol: AnyObject{
+    func verify()
+}
+
 class VerifyView: UIView {
+    
+    weak var verifyDelegate: VerifyProtocol?
+    
     var fieldStack = UIStackView()
     var verifyFields = [VerifyTextField]()
     
@@ -40,6 +47,14 @@ class VerifyView: UIView {
         addSubview(fieldStack)
     }
     
+    func getFieldsCode() -> String {
+        var fieldsCode = ""
+        verifyFields.forEach {
+            fieldsCode.append($0.text ?? "")
+        }
+        return fieldsCode
+    }
+    
     private func setConstraints(){
         NSLayoutConstraint.activate([
             fieldStack.topAnchor.constraint(equalTo: topAnchor),
@@ -59,12 +74,13 @@ extension VerifyView: FieldsProtocol {
         }
         else{
             //check
-            print("Check")
+            verifyDelegate?.verify()
         }
     }
     
     func activePreviousFields(tag: Int) {
         if tag != 0 {
+            verifyFields[tag - 1].text = ""
             verifyFields[tag - 1].becomeFirstResponder()
         }
     }
